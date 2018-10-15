@@ -6,5 +6,6 @@ namespace Moejoe.SimpleServiceDiscovery.WebService.ServiceRegistration
     public interface IServiceRegistrationService
     {
         Task<ServiceRegistrationResult> RegisterAsync(ServiceInstance service);
+        Task UnregisterAsync(string id);
     }
 }

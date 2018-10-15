@@ -11,8 +11,11 @@ namespace MoeJoe.SimpleServiceDiscovery.Models
     [DataContract]
     public class Error
     {
+        [DataMember]
         public string Title { get; set; }
+        [DataMember]
         public string Detail { get; set; }
+        [DataMember]
         public string Instance { get; set; }
         /// <summary>
         ///     A URI reference [RFC3986] that identifies the problem type.  

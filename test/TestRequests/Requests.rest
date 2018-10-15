@@ -1,0 +1,38 @@
+@baseUrl=http://localhost:5000
+###
+# @name registerService
+
+POST {{baseUrl}}/services
+Accept: application/json
+Content-Type: application/json
+
+{
+    "id": "SimpleServiceInstance",
+    "baseUrl": "http://simpleService.instance.com/",
+    "serviceDefinition": "SimpleService"
+}
+
+###
+# @name discoverService
+
+GET {{baseUrl}}/services/SimpleService
+
+
+
+###
+# @name registerFallbackService
+
+POST {{baseUrl}}/services
+Accept: application/json
+Content-Type: application/json
+
+{
+    "id": "SimpleServiceInstanceFallback",
+    "baseUrl": "http://simpleService.instance.com/",
+    "serviceDefinition": "SimpleService"
+}
+
+###
+# @name unregisterService
+
+DELETE {{baseUrl}}/services/SimpleServiceInstance

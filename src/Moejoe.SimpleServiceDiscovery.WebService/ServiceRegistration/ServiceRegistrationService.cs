@@ -27,7 +27,7 @@ namespace Moejoe.SimpleServiceDiscovery.WebService.ServiceRegistration
             return ServiceRegistrationResult.Success;
         }
 
-        public async Task UnRegisterAsync(string id)
+        public async Task UnregisterAsync(string id)
         {
             var instance = _context.ServiceInstances.SingleOrDefault(p => p.Id == id);
             if (instance == null)

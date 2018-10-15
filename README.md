@@ -1,10 +1,14 @@
+# Status
+
+`Experimental` - The first version is currently in development no part of this can be considered to be anywhere near testable. Expect major changes. 
+
 # Description (What)
 
 Service zum registrieren und entdecken von microservices.
 
 ## Discovery
 
-### HttpClient 
+### HttpClient (`untested`)
 ~~~csharp
     var discoveryResult = await _discoveryClient.DiscoverAsync("myService");
     if(discoveryResult.IsError) {
@@ -17,7 +21,7 @@ Service zum registrieren und entdecken von microservices.
         return resource;
 ~~~
 
-### Rest-Sharp
+### Rest-Sharp (`Not Supported`)
 ~~~csharp
 
     public void Configuration(this IServiceCollection services) 
@@ -38,7 +42,7 @@ Service zum registrieren und entdecken von microservices.
 
 ~~~
 
-### Asp.Net Core 2.1
+### Asp.Net Core 2.1 (`Not Supported`)
 
 ~~~csharp
 
@@ -53,44 +57,52 @@ Service zum registrieren und entdecken von microservices.
 
 
 
-## Registration
+## Registration (`untested`)
 
-~~~c-sharp
-    _registrationService.Register(new )
+~~~c-sharp 
+    _registrationService.Register(new ServiceInstance {
+            Id = "SimpleServiceInstance",
+            BaseUrl = "http://simpleService.instance.com/",
+            ServiceDefinition = "SimpleService"
+    });
 ~~~
 
-**Name**: The name of the *service-definition* this *service-instance* implements. (`required`)
+**ServiceDefinition**: The name of the *service-definition* this *service-instance* implements. (`required`)
 
 **Id**: The id of the current agent. This must be unique for the system boundary (there must not be any other *service-instance* using the same id that registers with this *RegistryAgent*) (`required`)
+**BaseUrl**: The apis *BaseUrl* (`required`)
 
-**ApiVersion**: The Api Version this *service-instance* implements. (Default: 1)
+~~**ApiVersion**: The Api Version this *service-instance* implements. (Default: 1)~~
 
-**InstanceVersion**: Version Information for the instance. (Default: 1.0.0.0)
+~~**InstanceVersion**: Version Information for the instance. (Default: 1.0.0.0)~~
 
 
 
-## Health Checks
+## Health Checks (`Not Supported`)
 
-When registering a Service the 
 
 ## Capabilities
 
-* Simple
-* Supports Health Checks
+* Register Service (`untested`)
+* Unregister Service (`untested`)
+* Discover Service (`untested`)
 
+# Future Features
 
-# Possible Future Features
+* Simple Healthchecks
+* Rediscover after failure
+* Support Api Versioning
 
-* 
 
 # Limitations
 
 * No Security
 * No Load - Balancing
+* Untested
 
 
 # Glossary
 
-**service-instance**: 
-**Registry-Agent**: The Application that provides access to the *service-registry*
-**service-registry**: A set of *service-instances* that implement *service-definitions*.
++   **service-instance**: An instance of a service that implements a *service-definition*
++   **Registry-Agent**: The Application that provides access to the *service-registry*
++   **service-registry**: A set of *service-instances* that implement *service-definitions*.

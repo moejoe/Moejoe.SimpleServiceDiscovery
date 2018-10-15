@@ -9,7 +9,7 @@ namespace Moejoe.SimpleServiceDiscovery.WebService.ServiceDiscovery
     {
         public static bool ServiceNotFound(this ServiceDiscoveryResult result)
         {
-            return result.Instances.Any();
+            return !result.Instances.Any();
         }
     }
 

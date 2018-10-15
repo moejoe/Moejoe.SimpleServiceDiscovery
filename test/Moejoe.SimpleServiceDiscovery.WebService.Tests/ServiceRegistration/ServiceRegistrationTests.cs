@@ -85,7 +85,7 @@ namespace Moejoe.SimpleServiceDiscovery.WebService.Tests
                         context.ServiceInstances.Add(ExistingServiceInstance.ToDao());
                         await context.SaveChangesAsync();
                         var service = new ServiceRegistrationService(context);
-                        await service.UnRegisterAsync(ExistingServiceInstance.Id);
+                        await service.UnregisterAsync(ExistingServiceInstance.Id);
                     }
                 }
             }
@@ -111,7 +111,7 @@ namespace Moejoe.SimpleServiceDiscovery.WebService.Tests
                     {
                         context.ServiceInstances.Add(ExistingServiceInstance.ToDao());
                         var service = new ServiceRegistrationService(context);
-                        await Assert.ThrowsAsync<ServiceInstanceNotFoundException>(async () => await service.UnRegisterAsync(ExistingServiceInstance.Id));
+                        await Assert.ThrowsAsync<ServiceInstanceNotFoundException>(async () => await service.UnregisterAsync(ExistingServiceInstance.Id));
                     }
                 }
             }

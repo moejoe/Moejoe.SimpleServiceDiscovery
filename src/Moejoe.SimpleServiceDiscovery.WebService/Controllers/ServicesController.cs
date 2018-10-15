@@ -14,12 +14,13 @@ namespace Moejoe.SimpleServiceDiscovery.WebService.Controllers
         private readonly IServiceDiscoveryService _serviceDiscoveryService;
         private readonly IServiceRegistrationService _serviceRegistrationService;
 
-        public ServicesController(IServiceDiscoveryService serviceDiscoveryService)
+        public ServicesController(IServiceDiscoveryService serviceDiscoveryService, IServiceRegistrationService serviceRegistrationService)
         {
             _serviceDiscoveryService = serviceDiscoveryService ?? throw new ArgumentNullException(nameof(serviceDiscoveryService));
+            _serviceRegistrationService = serviceRegistrationService ?? throw new ArgumentNullException(nameof(serviceRegistrationService));
         }
 
-        [HttpGet("{serviceDefinition}", Name = "DiscoverService")]
+        [HttpGet("{serviceDefinition}", Name = nameof(DiscoverService))]
         [ProducesResponseType(200, Type = typeof(ServiceInstance[]))]
         [ProducesResponseType(400, Type = typeof(Error))]
         [ProducesResponseType(404, Type = typeof(Error))]
@@ -43,7 +44,7 @@ namespace Moejoe.SimpleServiceDiscovery.WebService.Controllers
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400, Type = typeof(Error))]
-        public async Task<IActionResult> RegisterService([FromBody]ServiceInstance model)
+        public async Task<IActionResult> RegisterService([FromBody] ServiceInstance model)
         {
             if (model == null)
             {
@@ -56,7 +57,7 @@ namespace Moejoe.SimpleServiceDiscovery.WebService.Controllers
             try
             {
                 await _serviceRegistrationService.RegisterAsync(model);
-                return CreatedAtRoute("DiscoverSerivce", new { serviceDefinition = model.ServiceDefinition });
+                return CreatedAtRoute(nameof(DiscoverService), new { serviceDefinition = model.ServiceDefinition }, null);
             }
             catch (ServiceInstanceAlreadyExistsException)
             {
@@ -64,6 +65,26 @@ namespace Moejoe.SimpleServiceDiscovery.WebService.Controllers
                 {
                     error.Title = "Another ServiceInstance with the same id already exists.";
                     error.Detail = "Please ensure that each ServiceInstance id is unique!";
+                }));
+            }
+        }
+        [HttpDelete("{id}", Name = nameof(UnregisterService))]
+        public async Task<IActionResult> UnregisterService(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return BadRequest(this.InvalidArgumentError(nameof(id), "Must not be empty or null"));
+            }
+            try
+            {
+                await _serviceRegistrationService.UnregisterAsync(id);
+                return NoContent();
+            }
+            catch (ServiceInstanceNotFoundException)
+            {
+                return NotFound(this.GenerateError(DiscoveryApi.ErrorTypes.ServiceNotFound, error =>
+                {
+                    error.Title = "The ServiceInstance does not exist.";
                 }));
             }
         }

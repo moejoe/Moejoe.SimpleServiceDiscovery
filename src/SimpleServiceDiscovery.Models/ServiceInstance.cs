@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace MoeJoe.SimpleServiceDiscovery.Models
 {
@@ -12,6 +13,7 @@ namespace MoeJoe.SimpleServiceDiscovery.Models
         ///     example.com.myApi
         /// </example>
         [DataMember(IsRequired = true)]
+        [Required(AllowEmptyStrings = false)]
         public string ServiceDefinition { get; set; }
         /// <summary>
         ///     Specifies a unique ID for this service. This must be unique per agent. This defaults to the Name parameter if not provided.
@@ -20,6 +22,7 @@ namespace MoeJoe.SimpleServiceDiscovery.Models
         ///     myApi@appserver003
         /// </example>
         [DataMember(IsRequired = true)]
+        [Required(AllowEmptyStrings = false)]
         public string Id { get; set; }
         /// <summary>
         ///     Base Path
@@ -28,6 +31,7 @@ namespace MoeJoe.SimpleServiceDiscovery.Models
         ///     https://appserver003:8190/myApi/
         /// </example>
         [DataMember(IsRequired = true)]
+        [Required(AllowEmptyStrings = false)]
         public string BaseUrl { get; set; }
     }
 }
