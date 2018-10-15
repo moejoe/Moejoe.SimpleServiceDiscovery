@@ -4,7 +4,6 @@ using Moejoe.SimpleServiceDiscovery.WebService.Infrastructure;
 using MoeJoe.SimpleServiceDiscovery.Models;
 using Xunit;
 using System.Threading.Tasks;
-using System.Net.Http;
 
 
 namespace Moejoe.SimpleServiceDiscovery.WebService.Tests
@@ -13,7 +12,7 @@ namespace Moejoe.SimpleServiceDiscovery.WebService.Tests
     {
         public static class Discover
         {
- 
+
             public class WhenServiceDoesNotExist
             {
                 private const string NonExistingServiceName = "IDontExist";

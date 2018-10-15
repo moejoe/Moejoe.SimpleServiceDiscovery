@@ -34,12 +34,12 @@ namespace Moejoe.SimpleServiceDiscovery.Client
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return responseStream.DeserializeFromStream<ServiceInstance[]>()?
+                    return responseStream.DeserializeFromStream<ServiceInstance[]>()
                         .Select(p => new DiscoveryResponse
                         {
                             BaseUrl = new Uri(p.BaseUrl, UriKind.Absolute),
                             IsError = false
-                        }).FirstOrDefault() ?? throw new UnexpectedResponseContentException();
+                        }).FirstOrDefault();
                 }
                 var error = responseStream.DeserializeFromStream<Error>();
                 if (error.Type == DiscoveryApi.ErrorTypes.ServiceNotFound)
@@ -55,10 +55,6 @@ namespace Moejoe.SimpleServiceDiscovery.Client
             return DiscoverAsync(serviceDefinition, CancellationToken.None).Result;
             
         }
-    }
-    public class UnexpectedResponseContentException : Exception
-    {
-
     }
     public class DiscoveryException : Exception
     {

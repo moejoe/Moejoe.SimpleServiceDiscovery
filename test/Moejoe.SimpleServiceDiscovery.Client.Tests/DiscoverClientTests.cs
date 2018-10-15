@@ -9,22 +9,22 @@ using System.Threading;
 
 namespace Moejoe.SimpleServiceDiscovery.Client.Tests
 {
-    public class DiscoverClientTests
+    internal static class TestHelper
     {
-
-        private static string NotFoundResponseBody = Newtonsoft.Json.JsonConvert.SerializeObject(new Error
+        internal static TestServer CreateTestServer<TMockServerStartUp>() where TMockServerStartUp : class
         {
-            Type = DiscoveryApi.ErrorTypes.ServiceNotFound
-        });
 
+            return new TestServer(new WebHostBuilder()
+                .UseStartup<TMockServerStartUp>());
 
-        class StaticResponseTestServerStartUp
+        }
+        public class StaticResponseTestServerStartUp
         {
             private readonly int _statusCode;
             private readonly string _contentType;
             private readonly string _responseBody;
 
-            protected StaticResponseTestServerStartUp(int statusCode, string contentType, string responseBody = null)
+            protected StaticResponseTestServerStartUp(int statusCode, string contentType = null, string responseBody = null)
             {
                 _statusCode = statusCode;
                 _contentType = contentType;
@@ -36,7 +36,10 @@ namespace Moejoe.SimpleServiceDiscovery.Client.Tests
                 app.Run(async ctx =>
                 {
                     ctx.Response.StatusCode = _statusCode;
-                    ctx.Response.ContentType = _contentType;
+                    if (!string.IsNullOrWhiteSpace(_contentType))
+                    {
+                        ctx.Response.ContentType = _contentType;
+                    }
                     if (!string.IsNullOrWhiteSpace(_responseBody))
                     {
                         using (var writer = new StreamWriter(ctx.Response.Body))
@@ -48,21 +51,22 @@ namespace Moejoe.SimpleServiceDiscovery.Client.Tests
                 });
             }
         }
+    }
 
-        private static TestServer CreateTestServer<TMockServerStartUp>() where TMockServerStartUp : class
+    public class DiscoverClientTests
+    {
+
+        private static string NotFoundResponseBody = Newtonsoft.Json.JsonConvert.SerializeObject(new Error
         {
-
-            return new TestServer(new WebHostBuilder()
-                .UseStartup<TMockServerStartUp>());
-
-        }
+            Type = DiscoveryApi.ErrorTypes.ServiceNotFound
+        });
 
         public static class Discover
         {
             public class WhenServiceDoesNotExist
             {
 
-                class NotFoundMockServerStartUp : StaticResponseTestServerStartUp
+                class NotFoundMockServerStartUp : TestHelper.StaticResponseTestServerStartUp
                 {
                     public NotFoundMockServerStartUp() : base(404, "application/json", NotFoundResponseBody)
                     {
@@ -75,7 +79,7 @@ namespace Moejoe.SimpleServiceDiscovery.Client.Tests
                 [Fact]
                 public void ReturnsError()
                 {
-                    using (var server = CreateTestServer<NotFoundMockServerStartUp>())
+                    using (var server = TestHelper.CreateTestServer<NotFoundMockServerStartUp>())
                     {
                         var service = new DiscoveryClient(server.CreateClient());
 
@@ -99,7 +103,7 @@ namespace Moejoe.SimpleServiceDiscovery.Client.Tests
                     ServiceDefinition = ExistingServiceName,
                     BaseUrl = ExistingServiceBaseUrl
                 } });
-                class SingleServiceResponseMockServer : StaticResponseTestServerStartUp
+                class SingleServiceResponseMockServer : TestHelper.StaticResponseTestServerStartUp
                 {
                     public SingleServiceResponseMockServer() : base(200, "application/json", ResponseBody)
                     {
@@ -111,7 +115,7 @@ namespace Moejoe.SimpleServiceDiscovery.Client.Tests
                 [InlineData(ExistingServiceName, ExistingServiceBaseUrl)]
                 public void ReturnsServiceBaseUrl(string serviceName, string expectedBaseUrl)
                 {
-                    var server = CreateTestServer<SingleServiceResponseMockServer>();
+                    var server = TestHelper.CreateTestServer<SingleServiceResponseMockServer>();
                     var service = new DiscoveryClient(server.CreateClient());
                     var result = service.Discover(serviceName);
                     Assert.False(result.IsError);
@@ -126,7 +130,7 @@ namespace Moejoe.SimpleServiceDiscovery.Client.Tests
                     Type = "http://unexpected.errors/",
 
                 });
-                class UnexpectedErrorResponseMockServer : StaticResponseTestServerStartUp
+                class UnexpectedErrorResponseMockServer : TestHelper.StaticResponseTestServerStartUp
                 {
                     public UnexpectedErrorResponseMockServer() : base(422, "application/json", ResponseBody)
                     {
@@ -136,7 +140,7 @@ namespace Moejoe.SimpleServiceDiscovery.Client.Tests
                 [Fact]
                 public async Task ThrowsException()
                 {
-                    using (var server = CreateTestServer<UnexpectedErrorResponseMockServer>())
+                    using (var server = TestHelper.CreateTestServer<UnexpectedErrorResponseMockServer>())
                     {
                         var service = new DiscoveryClient(server.CreateClient());
 
@@ -146,5 +150,6 @@ namespace Moejoe.SimpleServiceDiscovery.Client.Tests
 
             }
         }
+
     }
 }

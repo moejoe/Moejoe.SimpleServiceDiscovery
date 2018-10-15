@@ -4,6 +4,6 @@ namespace Moejoe.SimpleServiceDiscovery.WebService.ServiceDiscovery
 {
     public interface IServiceDiscoveryService
     {
-        Task<ServiceDiscoveryResult> DiscoverAsync(string serviceName);
+        Task<ServiceDiscoveryResult> DiscoverAsync(string serviceDefinition);
     }
 }

@@ -15,9 +15,9 @@ namespace Moejoe.SimpleServiceDiscovery.WebService.ServiceDiscovery
             _context = context ?? throw new System.ArgumentNullException(nameof(context));
         }
 
-        public async Task<ServiceDiscoveryResult> DiscoverAsync(string serviceName)
+        public async Task<ServiceDiscoveryResult> DiscoverAsync(string serviceDefinition)
         {
-            var instances = await _context.ServiceInstances.Where(p => p.ServiceDefinition.Equals(serviceName)).Select(p => new ServiceInstance
+            var instances = await _context.ServiceInstances.Where(p => p.ServiceDefinition.Equals(serviceDefinition)).Select(p => new ServiceInstance
             {
                 ServiceDefinition = p.ServiceDefinition,
                 Id = p.Id,
