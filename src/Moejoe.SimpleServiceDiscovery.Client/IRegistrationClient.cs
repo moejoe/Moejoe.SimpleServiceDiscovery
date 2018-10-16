@@ -1,4 +1,5 @@
-﻿using MoeJoe.SimpleServiceDiscovery.Models;
+﻿
+using Moejoe.SimpleServiceDiscovery.Common.Models;
 using System.Threading;
 using System.Threading.Tasks;
 

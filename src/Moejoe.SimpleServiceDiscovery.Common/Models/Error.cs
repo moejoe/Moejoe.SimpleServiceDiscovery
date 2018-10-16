@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
+﻿using System.Runtime.Serialization;
 
-namespace MoeJoe.SimpleServiceDiscovery.Models
+namespace Moejoe.SimpleServiceDiscovery.Common.Models
 {
     /// <summary>
     ///     Rfc 7807 Error Type

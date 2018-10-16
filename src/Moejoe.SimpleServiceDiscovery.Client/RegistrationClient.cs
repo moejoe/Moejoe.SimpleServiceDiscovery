@@ -1,4 +1,5 @@
-﻿using MoeJoe.SimpleServiceDiscovery.Models;
+﻿using Moejoe.SimpleServiceDiscovery.Common;
+using Moejoe.SimpleServiceDiscovery.Common.Models;
 using Moejoe.SimpleServiceDiscovery.Client.Internal;
 using System;
 using System.Net.Http;

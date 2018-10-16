@@ -1,4 +1,4 @@
-﻿using MoeJoe.SimpleServiceDiscovery.Models;
+﻿using Moejoe.SimpleServiceDiscovery.Common.Models;
 using System.Threading.Tasks;
 
 namespace Moejoe.SimpleServiceDiscovery.WebService.ServiceRegistration

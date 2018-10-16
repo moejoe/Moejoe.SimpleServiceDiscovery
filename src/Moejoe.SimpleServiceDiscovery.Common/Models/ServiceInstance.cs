@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
-namespace MoeJoe.SimpleServiceDiscovery.Models
+namespace Moejoe.SimpleServiceDiscovery.Common.Models
 {
     [DataContract]
     public class ServiceInstance

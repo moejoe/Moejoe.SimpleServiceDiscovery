@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SimpleServiceDiscovery.Models\MoeJoe.SimpleServiceDiscovery.Models.csproj" />
+    <ProjectReference Include="..\Moejoe.SimpleServiceDiscovery.Common\Moejoe.SimpleServiceDiscovery.Common.csproj" />
   </ItemGroup>
 
 </Project>

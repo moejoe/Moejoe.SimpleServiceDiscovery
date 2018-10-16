@@ -1,7 +1,8 @@
 using Xunit;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.AspNetCore.Builder;
-using MoeJoe.SimpleServiceDiscovery.Models;
+using Moejoe.SimpleServiceDiscovery.Common;
+using Moejoe.SimpleServiceDiscovery.Common.Models;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using System.Threading.Tasks;

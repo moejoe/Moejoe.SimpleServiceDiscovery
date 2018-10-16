@@ -1,4 +1,4 @@
-﻿using MoeJoe.SimpleServiceDiscovery.Models;
+﻿using Moejoe.SimpleServiceDiscovery.Common.Models;
 
 namespace Moejoe.SimpleServiceDiscovery.WebService.ServiceDiscovery
 {

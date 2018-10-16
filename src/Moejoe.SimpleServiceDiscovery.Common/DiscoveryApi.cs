@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Moejoe.SimpleServiceDiscovery.Client
+namespace Moejoe.SimpleServiceDiscovery.Common
 {
     public static class DiscoveryApi
     {

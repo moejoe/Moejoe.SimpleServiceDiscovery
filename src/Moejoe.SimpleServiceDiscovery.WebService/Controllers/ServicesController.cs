@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using Moejoe.SimpleServiceDiscovery.WebService.ServiceDiscovery;
-using MoeJoe.SimpleServiceDiscovery.Models;
+using Moejoe.SimpleServiceDiscovery.Common;
+using Moejoe.SimpleServiceDiscovery.Common.Models;
 using System.Threading.Tasks;
-using Moejoe.SimpleServiceDiscovery.Client;
 using Moejoe.SimpleServiceDiscovery.WebService.ServiceRegistration;
 
 namespace Moejoe.SimpleServiceDiscovery.WebService.Controllers

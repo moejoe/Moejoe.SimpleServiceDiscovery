@@ -1,11 +1,11 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Moejoe.SimpleServiceDiscovery.Client.Internal;
-using MoeJoe.SimpleServiceDiscovery.Models;
+using Moejoe.SimpleServiceDiscovery.Common;
+using Moejoe.SimpleServiceDiscovery.Common.Models;
 
 namespace Moejoe.SimpleServiceDiscovery.Client
 {

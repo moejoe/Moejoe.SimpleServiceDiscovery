@@ -1,4 +1,4 @@
-﻿namespace MoeJoe.SimpleServiceDiscovery.Models
+﻿namespace Moejoe.SimpleServiceDiscovery.Common.Models
 {
     public class ServiceDefinition
     {

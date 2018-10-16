@@ -1,7 +1,7 @@
 using Moejoe.SimpleServiceDiscovery.WebService.ServiceDiscovery;
 using Microsoft.EntityFrameworkCore;
 using Moejoe.SimpleServiceDiscovery.WebService.Infrastructure;
-using MoeJoe.SimpleServiceDiscovery.Models;
+using Moejoe.SimpleServiceDiscovery.Common.Models;
 using Xunit;
 using System.Threading.Tasks;
 

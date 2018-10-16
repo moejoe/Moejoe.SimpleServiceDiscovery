@@ -1,10 +1,10 @@
 ﻿using Xunit;
-using MoeJoe.SimpleServiceDiscovery.Models;
+using Moejoe.SimpleServiceDiscovery.Common;
+using Moejoe.SimpleServiceDiscovery.Common.Models;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.AspNetCore.Hosting;
 using System.Threading;
-using System;
 
 namespace Moejoe.SimpleServiceDiscovery.Client.Tests
 {

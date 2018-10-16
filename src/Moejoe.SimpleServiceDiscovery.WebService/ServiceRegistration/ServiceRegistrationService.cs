@@ -1,5 +1,5 @@
 ﻿using Moejoe.SimpleServiceDiscovery.WebService.Infrastructure;
-using MoeJoe.SimpleServiceDiscovery.Models;
+using Moejoe.SimpleServiceDiscovery.Common.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;

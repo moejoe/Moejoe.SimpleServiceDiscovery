@@ -3,8 +3,9 @@ using System.Linq;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Moejoe.SimpleServiceDiscovery.Client;
-using MoeJoe.SimpleServiceDiscovery.Models;
+using Moejoe.SimpleServiceDiscovery.Common;
+using Moejoe.SimpleServiceDiscovery.Common.Models;
+
 
 namespace Moejoe.SimpleServiceDiscovery.WebService
 {
