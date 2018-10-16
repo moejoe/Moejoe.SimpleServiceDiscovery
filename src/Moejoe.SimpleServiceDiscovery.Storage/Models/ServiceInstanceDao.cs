@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Moejoe.SimpleServiceDiscovery.Server.Infrastructure
+namespace Moejoe.SimpleServiceDiscovery.Storage.Models
 {
     public class ServiceInstanceDao
     {
@@ -12,6 +12,6 @@ namespace Moejoe.SimpleServiceDiscovery.Server.Infrastructure
         public string ServiceDefinition { get; set; }
         [MinLength(3)]
         [MaxLength(2048)]
-        public string BaseUrl { get; internal set; }
+        public string BaseUrl { get; set; }
     }
 }

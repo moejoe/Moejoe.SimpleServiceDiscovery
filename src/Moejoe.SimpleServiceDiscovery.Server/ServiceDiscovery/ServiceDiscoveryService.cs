@@ -1,29 +1,29 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Moejoe.SimpleServiceDiscovery.Common.Models;
-using Moejoe.SimpleServiceDiscovery.Server.Infrastructure;
+using Moejoe.SimpleServiceDiscovery.Storage.Stores;
 
 namespace Moejoe.SimpleServiceDiscovery.Server.ServiceDiscovery
 {
     public class ServiceDiscoveryService : IServiceDiscoveryService
     {
-        private readonly ServiceDiscoveryContext _context;
+        private readonly IServiceRegistryStore _serviceRegistryStore;
 
-        public ServiceDiscoveryService(ServiceDiscoveryContext context)
+        public ServiceDiscoveryService(IServiceRegistryStore serviceRegistryStore)
         {
-            _context = context ?? throw new System.ArgumentNullException(nameof(context));
+            _serviceRegistryStore = serviceRegistryStore ?? throw new ArgumentNullException(nameof(serviceRegistryStore));
         }
 
         public async Task<ServiceDiscoveryResult> DiscoverAsync(string serviceDefinition)
         {
-            var instances = await _context.ServiceInstances.Where(p => p.ServiceDefinition.Equals(serviceDefinition)).Select(p => new ServiceInstance
+            var instances = (await _serviceRegistryStore.FindByServiceDefinitionAsync(serviceDefinition)).Select(p => new ServiceInstance
             {
                 ServiceDefinition = p.ServiceDefinition,
                 Id = p.Id,
                 BaseUrl = p.BaseUrl
 
-            }).ToArrayAsync();
+            }).ToArray();
             return new ServiceDiscoveryResult
             {
                 Instances = instances

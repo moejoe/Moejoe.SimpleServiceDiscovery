@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Moejoe.SimpleServiceDiscovery.EntityFramework.Storage.DbContexts;
 using Moejoe.SimpleServiceDiscovery.Server;
-using Moejoe.SimpleServiceDiscovery.Server.Infrastructure;
 
 namespace Moejoe.SimpleServiceDiscovery.WebService
 {
@@ -13,7 +13,7 @@ namespace Moejoe.SimpleServiceDiscovery.WebService
         {
             services.AddMvc();
             services.AddEntityFrameworkInMemoryDatabase();
-            services.AddDbContext<ServiceDiscoveryContext>(opts =>
+            services.AddServiceRegistryStore(opts =>
             {
                 opts.UseInMemoryDatabase("testDB");
             });

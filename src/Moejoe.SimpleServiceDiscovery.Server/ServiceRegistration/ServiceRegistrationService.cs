@@ -3,39 +3,40 @@ using System.Linq;
 using System.Threading.Tasks;
 using Moejoe.SimpleServiceDiscovery.Common.Models;
 using Moejoe.SimpleServiceDiscovery.Server.Infrastructure;
+using Moejoe.SimpleServiceDiscovery.Storage.Stores;
 
 namespace Moejoe.SimpleServiceDiscovery.Server.ServiceRegistration
 {
 
     public class ServiceRegistrationService : IServiceRegistrationService
     {
-        private readonly ServiceDiscoveryContext _context;
+        private readonly IServiceRegistryStore _serviceRegistryStore;
 
-        public ServiceRegistrationService(ServiceDiscoveryContext context)
+        public ServiceRegistrationService(IServiceRegistryStore serviceRegistryStore)
         {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _serviceRegistryStore = serviceRegistryStore ?? throw new ArgumentNullException(nameof(serviceRegistryStore));
         }
 
         public async Task<ServiceRegistrationResult> RegisterAsync(ServiceInstance service)
         {
-            if (_context.ServiceInstances.Any(p => p.Id == service.Id))
+            var instance = await _serviceRegistryStore.GetAsync(service.Id);
+            
+            if (instance != null)
             {
                 throw new ServiceInstanceAlreadyExistsException(service.Id);
             }
-            _context.ServiceInstances.Add(service.ToDao());
-            await _context.SaveChangesAsync();
+            await _serviceRegistryStore.StoreAsync(service.ToDao());
             return ServiceRegistrationResult.Success;
         }
 
         public async Task UnregisterAsync(string id)
         {
-            var instance = _context.ServiceInstances.SingleOrDefault(p => p.Id == id);
+            var instance = await _serviceRegistryStore.GetAsync(id);
             if (instance == null)
             {
                 throw new ServiceInstanceNotFoundException(id);
             }
-            _context.ServiceInstances.Remove(instance);
-            await _context.SaveChangesAsync();
+            await _serviceRegistryStore.RemoveAsync(id);
         }
     }
 }
