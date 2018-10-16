@@ -1,3 +1,23 @@
+<!-- TOC -->
+
+- [Status](#status)
+- [Description (What)](#description-what)
+    - [Server](#server)
+        - [Development Environment with InMemory Storage](#development-environment-with-inmemory-storage)
+        - [Development Environment with Entity Framework InMemoryDatabase](#development-environment-with-entity-framework-inmemorydatabase)
+        - [Environment with SQL Server (`Add Example`)](#environment-with-sql-server-add-example)
+    - [Discovery Client](#discovery-client)
+        - [HttpClient (`untested`)](#httpclient-untested)
+        - [Rest-Sharp (`Not Supported`)](#rest-sharp-not-supported)
+        - [Asp.Net Core 2.1 (`Not Supported`)](#aspnet-core-21-not-supported)
+    - [Registration Client (`untested`)](#registration-client-untested)
+    - [Health Checks (`Not Supported`)](#health-checks-not-supported)
+    - [Capabilities](#capabilities)
+- [Future Features](#future-features)
+- [Limitations](#limitations)
+- [Glossary](#glossary)
+
+<!-- /TOC -->
 # Status
 
 `Experimental` - The first version is currently in development no part of this can be considered to be anywhere near testable. Expect major changes. 
@@ -6,7 +26,46 @@
 
 Service zum registrieren und entdecken von microservices.
 
-## Discovery
+## Server 
+
+The server depends on an MVC WebApplication.
+
+### Development Environment with InMemory Storage
+~~~csharp
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddMvc();
+            services.AddServiceDiscoveryServer()
+                .AddInMemoryServiceRegistryStore();
+        }
+
+        public void Configure(IApplicationBuilder app)
+        {
+            app.UseMvc();
+        }
+~~~
+
+### Development Environment with Entity Framework InMemoryDatabase
+~~~csharp
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddMvc();
+            services.AddEntityFrameworkInMemoryDatabase();
+            services.AddServiceDiscoveryServer()
+                .AddServiceRegistryStore(opt => { opt.UseInMemoryDatabase("testDb"); });
+        }
+
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
+            app.UseMvc();
+        }
+~~~
+
+### Environment with SQL Server (`Add Example`)
+
+
+
+## Discovery Client
 
 ### HttpClient (`untested`)
 ~~~csharp
@@ -57,7 +116,7 @@ Service zum registrieren und entdecken von microservices.
 
 
 
-## Registration (`untested`)
+## Registration Client (`untested`)
 
 ~~~c-sharp 
     _registrationService.Register(new ServiceInstance {

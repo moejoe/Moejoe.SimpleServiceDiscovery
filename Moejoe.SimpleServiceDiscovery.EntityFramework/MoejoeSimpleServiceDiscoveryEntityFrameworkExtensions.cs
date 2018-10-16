@@ -2,17 +2,18 @@
 using Microsoft.EntityFrameworkCore;
 using Moejoe.SimpleServiceDiscovery.EntityFramework.Storage.DbContexts;
 using Moejoe.SimpleServiceDiscovery.EntityFramework.Storage.Stores;
-using Moejoe.SimpleServiceDiscovery.Storage.Stores;
+using Moejoe.SimpleServiceDiscovery.Server.Configuration;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class MoejoeSimpleServiceDiscoveryEntityFrameworkExtensions
     {
-        public static IServiceCollection AddServiceRegistryStore(this IServiceCollection services,
+        public static IServiceDiscoveryServerBuilder AddServiceRegistryStore(this IServiceDiscoveryServerBuilder builder,
             Action<DbContextOptionsBuilder> configureContextOptions)
         {
-            services.AddDbContext<ServiceDiscoveryContext>(configureContextOptions);
-            return services.AddScoped<IServiceRegistryStore, ServiceRegistryStore>();
+            builder.Services.AddDbContext<ServiceDiscoveryContext>(configureContextOptions);
+            builder.AddServiceRegistryStore<ServiceRegistryStore>();
+            return builder;
         }
     }
 }
