@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Version>0.1.0</Version>
+    <Authors>m.haslhofer@gmail.com</Authors>
+    <RepositoryUrl>https://github.com/moejoe/Moejoe.SimpleServiceDiscovery</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Microservices Discovery Rest Asp.NET Core EntityFramework</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
