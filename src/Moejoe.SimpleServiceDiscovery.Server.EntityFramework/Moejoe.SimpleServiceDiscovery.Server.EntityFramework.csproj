@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Moejoe.SimpleServiceDiscovery.Server.EntityFramework.Storage\Moejoe.SimpleServiceDiscovery.Server.EntityFramework.Storage.csproj" />
+    <ProjectReference Include="..\Moejoe.SimpleServiceDiscovery.Server\Moejoe.SimpleServiceDiscovery.Server.csproj" />
+  </ItemGroup>
+
+</Project>

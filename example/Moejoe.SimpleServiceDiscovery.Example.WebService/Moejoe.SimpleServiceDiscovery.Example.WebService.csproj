@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Moejoe.SimpleServiceDiscovery.EntityFramework\Moejoe.SimpleServiceDiscovery.EntityFramework.csproj" />
-    <ProjectReference Include="..\Moejoe.SimpleServiceDiscovery.Server\Moejoe.SimpleServiceDiscovery.Server.csproj" />
+    <ProjectReference Include="..\..\src\Moejoe.SimpleServiceDiscovery.Server.EntityFramework\Moejoe.SimpleServiceDiscovery.Server.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\src\Moejoe.SimpleServiceDiscovery.Server\Moejoe.SimpleServiceDiscovery.Server.csproj" />
   </ItemGroup>
 
 </Project>

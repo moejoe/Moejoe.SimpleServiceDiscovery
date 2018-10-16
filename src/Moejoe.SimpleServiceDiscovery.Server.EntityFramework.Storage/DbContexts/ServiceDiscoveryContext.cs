@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Moejoe.SimpleServiceDiscovery.Storage.Models;
+using Moejoe.SimpleServiceDiscovery.Server.Storage.Models;
 
-namespace Moejoe.SimpleServiceDiscovery.EntityFramework.Storage.DbContexts
+namespace Moejoe.SimpleServiceDiscovery.Server.EntityFramework.Storage.DbContexts
 {
     public class ServiceDiscoveryContext : DbContext
     {

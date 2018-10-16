@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Moejoe.SimpleServiceDiscovery.Storage.Models;
+using Moejoe.SimpleServiceDiscovery.Server.Storage.Models;
 
-namespace Moejoe.SimpleServiceDiscovery.Storage.Stores
+namespace Moejoe.SimpleServiceDiscovery.Server.Storage.Stores
 {
     public interface IServiceRegistryStore
     {

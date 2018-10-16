@@ -1,12 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Moejoe.SimpleServiceDiscovery.EntityFramework.Storage.DbContexts;
-using Moejoe.SimpleServiceDiscovery.Storage.Models;
-using Moejoe.SimpleServiceDiscovery.Storage.Stores;
+using Moejoe.SimpleServiceDiscovery.Server.EntityFramework.Storage.DbContexts;
+using Moejoe.SimpleServiceDiscovery.Server.Storage.Models;
+using Moejoe.SimpleServiceDiscovery.Server.Storage.Stores;
 
-namespace Moejoe.SimpleServiceDiscovery.EntityFramework.Storage.Stores
+namespace Moejoe.SimpleServiceDiscovery.Server.EntityFramework.Storage.Stores
 {
     public class ServiceRegistryStore : IServiceRegistryStore
     {

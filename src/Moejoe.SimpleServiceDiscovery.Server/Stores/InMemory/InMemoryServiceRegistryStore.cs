@@ -1,8 +1,8 @@
 ﻿using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
-using Moejoe.SimpleServiceDiscovery.Storage.Models;
-using Moejoe.SimpleServiceDiscovery.Storage.Stores;
+using Moejoe.SimpleServiceDiscovery.Server.Storage.Models;
+using Moejoe.SimpleServiceDiscovery.Server.Storage.Stores;
 
 namespace Moejoe.SimpleServiceDiscovery.Server.Stores.InMemory
 {

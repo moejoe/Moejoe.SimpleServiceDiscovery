@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moejoe.SimpleServiceDiscovery.Common;
 using Moejoe.SimpleServiceDiscovery.Common.Models;

@@ -1,8 +1,10 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Moejoe.SimpleServiceDiscovery.Common.Models;
 using Moejoe.SimpleServiceDiscovery.Server.Infrastructure;
 using Moejoe.SimpleServiceDiscovery.Server.ServiceRegistration;
+using Moejoe.SimpleServiceDiscovery.Server.Storage.Models;
+using Moejoe.SimpleServiceDiscovery.Server.Storage.Stores;
+using Moq;
 using Xunit;
 
 namespace Moejoe.SimpleServiceDiscovery.Server.Tests.ServiceRegistration
@@ -23,15 +25,11 @@ namespace Moejoe.SimpleServiceDiscovery.Server.Tests.ServiceRegistration
                 [Fact]
                 public async Task ReturnsSuccess()
                 {
-                    var opts = new DbContextOptionsBuilder<ServiceDiscoveryContext>()
-                        .UseInMemoryDatabase("WhenNewServiceDefinition")
-                        .Options;
-                    using (var context = new ServiceDiscoveryContext(opts))
-                    {
-                        var service = new ServiceRegistrationService(context);
-                        var result = await service.RegisterAsync(ServiceInstance);
-                        Assert.False(result.IsError);
-                    }
+                    var store = new Mock<IServiceRegistryStore>();
+                    store.Setup(p => p.GetAsync(ServiceInstance.Id)).ReturnsAsync(default(ServiceInstanceDao));
+                    var service = new ServiceRegistrationService(store.Object);
+                    var result = await service.RegisterAsync(ServiceInstance);
+                    Assert.False(result.IsError);
                 }
             }
 
@@ -47,17 +45,11 @@ namespace Moejoe.SimpleServiceDiscovery.Server.Tests.ServiceRegistration
                 [Fact]
                 public async Task DoesNotThrow()
                 {
-                    var opts = new DbContextOptionsBuilder<ServiceDiscoveryContext>()
-                        .UseInMemoryDatabase("WhenServiceInstanceIdExists")
-                        .Options;
+                    var store = new Mock<IServiceRegistryStore>();
+                    store.Setup(p => p.GetAsync(ExistingServiceInstance.Id)).ReturnsAsync(ExistingServiceInstance.ToDao());
+                    var service = new ServiceRegistrationService(store.Object);
+                    await Assert.ThrowsAsync<ServiceInstanceAlreadyExistsException>(async () => await service.RegisterAsync(ExistingServiceInstance));
 
-                    using (var context = new ServiceDiscoveryContext(opts))
-                    {
-                        context.ServiceInstances.Add(ExistingServiceInstance.ToDao());
-                        await context.SaveChangesAsync();
-                        var service = new ServiceRegistrationService(context);
-                        await Assert.ThrowsAsync<ServiceInstanceAlreadyExistsException>(async () => await service.RegisterAsync(ExistingServiceInstance));
-                    }
                 }
             }
 
@@ -76,17 +68,11 @@ namespace Moejoe.SimpleServiceDiscovery.Server.Tests.ServiceRegistration
                 [Fact]
                 public async Task DoesNotThrow()
                 {
-                    var opts = new DbContextOptionsBuilder<ServiceDiscoveryContext>()
-                        .UseInMemoryDatabase("WhenServiceExists")
-                        .Options;
+                    var store = new Mock<IServiceRegistryStore>();
+                    store.Setup(p => p.GetAsync(ExistingServiceInstance.Id)).ReturnsAsync(ExistingServiceInstance.ToDao());
 
-                    using (var context = new ServiceDiscoveryContext(opts))
-                    {
-                        context.ServiceInstances.Add(ExistingServiceInstance.ToDao());
-                        await context.SaveChangesAsync();
-                        var service = new ServiceRegistrationService(context);
-                        await service.UnregisterAsync(ExistingServiceInstance.Id);
-                    }
+                    var service = new ServiceRegistrationService(store.Object);
+                    await service.UnregisterAsync(ExistingServiceInstance.Id);
                 }
             }
 
@@ -103,16 +89,11 @@ namespace Moejoe.SimpleServiceDiscovery.Server.Tests.ServiceRegistration
                 [Fact]
                 public async Task ThrowsException()
                 {
-                    var opts = new DbContextOptionsBuilder<ServiceDiscoveryContext>()
-                        .UseInMemoryDatabase("test")
-                        .Options;
+                    var store = new Mock<IServiceRegistryStore>();
+                    store.Setup(p => p.GetAsync(ExistingServiceInstance.Id)).ReturnsAsync(default(ServiceInstanceDao));
+                    var service = new ServiceRegistrationService(store.Object);
+                    await Assert.ThrowsAsync<ServiceInstanceNotFoundException>(async () => await service.UnregisterAsync(ExistingServiceInstance.Id));
 
-                    using (var context = new ServiceDiscoveryContext(opts))
-                    {
-                        context.ServiceInstances.Add(ExistingServiceInstance.ToDao());
-                        var service = new ServiceRegistrationService(context);
-                        await Assert.ThrowsAsync<ServiceInstanceNotFoundException>(async () => await service.UnregisterAsync(ExistingServiceInstance.Id));
-                    }
                 }
             }
         }

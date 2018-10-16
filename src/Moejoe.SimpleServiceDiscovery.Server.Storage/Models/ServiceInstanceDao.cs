@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Moejoe.SimpleServiceDiscovery.Storage.Models
+namespace Moejoe.SimpleServiceDiscovery.Server.Storage.Models
 {
     public class ServiceInstanceDao
     {

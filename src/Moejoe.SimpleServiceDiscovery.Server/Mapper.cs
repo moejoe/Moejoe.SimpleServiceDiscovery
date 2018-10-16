@@ -1,5 +1,5 @@
 ﻿using Moejoe.SimpleServiceDiscovery.Common.Models;
-using Moejoe.SimpleServiceDiscovery.Storage.Models;
+using Moejoe.SimpleServiceDiscovery.Server.Storage.Models;
 
 namespace Moejoe.SimpleServiceDiscovery.Server.Infrastructure
 {

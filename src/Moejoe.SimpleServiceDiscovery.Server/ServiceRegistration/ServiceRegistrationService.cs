@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Moejoe.SimpleServiceDiscovery.Common.Models;
 using Moejoe.SimpleServiceDiscovery.Server.Infrastructure;
-using Moejoe.SimpleServiceDiscovery.Storage.Stores;
+using Moejoe.SimpleServiceDiscovery.Server.Storage.Stores;
 
 namespace Moejoe.SimpleServiceDiscovery.Server.ServiceRegistration
 {

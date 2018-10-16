@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using Moejoe.SimpleServiceDiscovery.EntityFramework.Storage.DbContexts;
-using Moejoe.SimpleServiceDiscovery.EntityFramework.Storage.Stores;
 using Moejoe.SimpleServiceDiscovery.Server.Configuration;
+using Moejoe.SimpleServiceDiscovery.Server.EntityFramework.Storage.DbContexts;
+using Moejoe.SimpleServiceDiscovery.Server.EntityFramework.Storage.Stores;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

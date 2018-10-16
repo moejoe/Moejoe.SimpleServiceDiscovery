@@ -1,8 +1,8 @@
 ﻿using Moejoe.SimpleServiceDiscovery.Server.Configuration;
 using Moejoe.SimpleServiceDiscovery.Server.ServiceDiscovery;
 using Moejoe.SimpleServiceDiscovery.Server.ServiceRegistration;
+using Moejoe.SimpleServiceDiscovery.Server.Storage.Stores;
 using Moejoe.SimpleServiceDiscovery.Server.Stores.InMemory;
-using Moejoe.SimpleServiceDiscovery.Storage.Stores;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
