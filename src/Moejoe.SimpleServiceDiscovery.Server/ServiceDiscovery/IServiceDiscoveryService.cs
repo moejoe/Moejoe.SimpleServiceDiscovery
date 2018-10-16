@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Moejoe.SimpleServiceDiscovery.WebService.ServiceDiscovery
+namespace Moejoe.SimpleServiceDiscovery.Server.ServiceDiscovery
 {
     public interface IServiceDiscoveryService
     {

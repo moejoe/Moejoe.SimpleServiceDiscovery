@@ -6,8 +6,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Moejoe.SimpleServiceDiscovery.Common;
 using Moejoe.SimpleServiceDiscovery.Common.Models;
 
-
-namespace Moejoe.SimpleServiceDiscovery.WebService
+namespace Moejoe.SimpleServiceDiscovery.Server.Errors
 {
     public static class ControllerExtensions
     {

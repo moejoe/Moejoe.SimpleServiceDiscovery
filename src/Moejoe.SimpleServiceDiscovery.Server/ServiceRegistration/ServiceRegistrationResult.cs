@@ -1,4 +1,4 @@
-﻿namespace Moejoe.SimpleServiceDiscovery.WebService.ServiceRegistration
+﻿namespace Moejoe.SimpleServiceDiscovery.Server.ServiceRegistration
 {
     public class ServiceRegistrationResult
     {

@@ -2,7 +2,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Moejoe.SimpleServiceDiscovery.WebService.Infrastructure;
+using Moejoe.SimpleServiceDiscovery.Server;
+using Moejoe.SimpleServiceDiscovery.Server.Infrastructure;
 
 namespace Moejoe.SimpleServiceDiscovery.WebService
 {

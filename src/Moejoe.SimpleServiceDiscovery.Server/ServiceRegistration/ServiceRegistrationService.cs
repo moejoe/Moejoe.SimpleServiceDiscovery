@@ -1,10 +1,10 @@
-﻿using Moejoe.SimpleServiceDiscovery.WebService.Infrastructure;
-using Moejoe.SimpleServiceDiscovery.Common.Models;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Moejoe.SimpleServiceDiscovery.Common.Models;
+using Moejoe.SimpleServiceDiscovery.Server.Infrastructure;
 
-namespace Moejoe.SimpleServiceDiscovery.WebService.ServiceRegistration
+namespace Moejoe.SimpleServiceDiscovery.Server.ServiceRegistration
 {
 
     public class ServiceRegistrationService : IServiceRegistrationService

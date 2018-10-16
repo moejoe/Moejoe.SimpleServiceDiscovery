@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Moejoe.SimpleServiceDiscovery.WebService.Infrastructure;
 using Moejoe.SimpleServiceDiscovery.Common.Models;
+using Moejoe.SimpleServiceDiscovery.Server.Infrastructure;
 
-namespace Moejoe.SimpleServiceDiscovery.WebService.ServiceDiscovery
+namespace Moejoe.SimpleServiceDiscovery.Server.ServiceDiscovery
 {
     public class ServiceDiscoveryService : IServiceDiscoveryService
     {

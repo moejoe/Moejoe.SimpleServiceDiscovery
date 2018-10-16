@@ -1,7 +1,7 @@
-﻿using Moejoe.SimpleServiceDiscovery.Common.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Moejoe.SimpleServiceDiscovery.Common.Models;
 
-namespace Moejoe.SimpleServiceDiscovery.WebService.ServiceRegistration
+namespace Moejoe.SimpleServiceDiscovery.Server.ServiceRegistration
 {
     public interface IServiceRegistrationService
     {

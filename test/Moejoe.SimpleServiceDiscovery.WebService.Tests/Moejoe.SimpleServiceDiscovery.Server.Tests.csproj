@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Moejoe.SimpleServiceDiscovery.WebService\Moejoe.SimpleServiceDiscovery.WebService.csproj" />
+    <ProjectReference Include="..\..\src\Moejoe.SimpleServiceDiscovery.Server\Moejoe.SimpleServiceDiscovery.Server.csproj" />
   </ItemGroup>
 
 </Project>

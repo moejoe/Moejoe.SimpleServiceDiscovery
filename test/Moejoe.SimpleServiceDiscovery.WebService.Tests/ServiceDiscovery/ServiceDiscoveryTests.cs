@@ -1,12 +1,11 @@
-using Moejoe.SimpleServiceDiscovery.WebService.ServiceDiscovery;
-using Microsoft.EntityFrameworkCore;
-using Moejoe.SimpleServiceDiscovery.WebService.Infrastructure;
-using Moejoe.SimpleServiceDiscovery.Common.Models;
-using Xunit;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Moejoe.SimpleServiceDiscovery.Common.Models;
+using Moejoe.SimpleServiceDiscovery.Server.Infrastructure;
+using Moejoe.SimpleServiceDiscovery.Server.ServiceDiscovery;
+using Xunit;
 
-
-namespace Moejoe.SimpleServiceDiscovery.WebService.Tests
+namespace Moejoe.SimpleServiceDiscovery.Server.Tests.ServiceDiscovery
 {
     public class ServiceDiscoveryTests
     {

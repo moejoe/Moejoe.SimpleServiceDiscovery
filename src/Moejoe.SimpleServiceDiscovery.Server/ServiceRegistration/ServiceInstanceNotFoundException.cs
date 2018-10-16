@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Moejoe.SimpleServiceDiscovery.WebService.ServiceRegistration
+namespace Moejoe.SimpleServiceDiscovery.Server.ServiceRegistration
 {
     [Serializable]
     public class ServiceInstanceNotFoundException : Exception

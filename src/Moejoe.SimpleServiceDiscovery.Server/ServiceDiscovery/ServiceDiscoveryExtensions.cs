@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Moejoe.SimpleServiceDiscovery.WebService.ServiceDiscovery
+namespace Moejoe.SimpleServiceDiscovery.Server.ServiceDiscovery
 {
     public static class ServiceDiscoveryExtensions
     {

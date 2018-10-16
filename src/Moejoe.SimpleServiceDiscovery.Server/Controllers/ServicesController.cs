@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using Moejoe.SimpleServiceDiscovery.WebService.ServiceDiscovery;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Moejoe.SimpleServiceDiscovery.Common;
 using Moejoe.SimpleServiceDiscovery.Common.Models;
-using System.Threading.Tasks;
-using Moejoe.SimpleServiceDiscovery.WebService.ServiceRegistration;
+using Moejoe.SimpleServiceDiscovery.Server.Errors;
+using Moejoe.SimpleServiceDiscovery.Server.ServiceDiscovery;
+using Moejoe.SimpleServiceDiscovery.Server.ServiceRegistration;
 
-namespace Moejoe.SimpleServiceDiscovery.WebService.Controllers
+namespace Moejoe.SimpleServiceDiscovery.Server.Controllers
 {
     [Route(DiscoveryApi.Resources.Services)]
-    public class ServicesController : Controller
+    public class ServicesController : ControllerBase
     {
         private readonly IServiceDiscoveryService _serviceDiscoveryService;
         private readonly IServiceRegistrationService _serviceRegistrationService;

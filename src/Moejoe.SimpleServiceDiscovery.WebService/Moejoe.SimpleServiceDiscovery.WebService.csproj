@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -14,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Moejoe.SimpleServiceDiscovery.Common\Moejoe.SimpleServiceDiscovery.Common.csproj" />
+    <ProjectReference Include="..\Moejoe.SimpleServiceDiscovery.Server\Moejoe.SimpleServiceDiscovery.Server.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿using Moejoe.SimpleServiceDiscovery.Common.Models;
 
-namespace Moejoe.SimpleServiceDiscovery.WebService.ServiceDiscovery
+namespace Moejoe.SimpleServiceDiscovery.Server.ServiceDiscovery
 {
     public class ServiceDiscoveryResult
     {

@@ -1,6 +1,6 @@
 ﻿using Moejoe.SimpleServiceDiscovery.Common.Models;
 
-namespace Moejoe.SimpleServiceDiscovery.WebService.Infrastructure
+namespace Moejoe.SimpleServiceDiscovery.Server.Infrastructure
 {
     public static class Mapper
     {
