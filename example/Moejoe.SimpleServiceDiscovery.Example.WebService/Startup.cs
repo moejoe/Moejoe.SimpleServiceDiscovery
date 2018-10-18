@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-
-namespace Moejoe.SimpleServiceDiscovery.WebService
+namespace Moejoe.SimpleServiceDiscovery.Example.WebService
 {
     public class Startup
     {

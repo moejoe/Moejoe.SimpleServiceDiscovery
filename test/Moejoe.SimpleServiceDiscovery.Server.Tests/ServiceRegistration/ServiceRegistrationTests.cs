@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.Extensions.Logging.Abstractions;
 using Moejoe.SimpleServiceDiscovery.Common.Models;
 using Moejoe.SimpleServiceDiscovery.Server.Infrastructure;
 using Moejoe.SimpleServiceDiscovery.Server.ServiceRegistration;
@@ -27,7 +28,7 @@ namespace Moejoe.SimpleServiceDiscovery.Server.Tests.ServiceRegistration
                 {
                     var store = new Mock<IServiceRegistryStore>();
                     store.Setup(p => p.GetAsync(ServiceInstance.Id)).ReturnsAsync(default(ServiceInstanceDao));
-                    var service = new ServiceRegistrationService(store.Object);
+                    var service = new ServiceRegistrationService(store.Object, NullLogger<ServiceRegistrationService>.Instance);
                     var result = await service.RegisterAsync(ServiceInstance);
                     Assert.False(result.IsError);
                 }
@@ -47,7 +48,7 @@ namespace Moejoe.SimpleServiceDiscovery.Server.Tests.ServiceRegistration
                 {
                     var store = new Mock<IServiceRegistryStore>();
                     store.Setup(p => p.GetAsync(ExistingServiceInstance.Id)).ReturnsAsync(ExistingServiceInstance.ToDao());
-                    var service = new ServiceRegistrationService(store.Object);
+                    var service = new ServiceRegistrationService(store.Object, NullLogger<ServiceRegistrationService>.Instance);
                     await Assert.ThrowsAsync<ServiceInstanceAlreadyExistsException>(async () => await service.RegisterAsync(ExistingServiceInstance));
 
                 }
@@ -71,7 +72,7 @@ namespace Moejoe.SimpleServiceDiscovery.Server.Tests.ServiceRegistration
                     var store = new Mock<IServiceRegistryStore>();
                     store.Setup(p => p.GetAsync(ExistingServiceInstance.Id)).ReturnsAsync(ExistingServiceInstance.ToDao());
 
-                    var service = new ServiceRegistrationService(store.Object);
+                    var service = new ServiceRegistrationService(store.Object, NullLogger<ServiceRegistrationService>.Instance);
                     await service.UnregisterAsync(ExistingServiceInstance.Id);
                 }
             }
@@ -91,7 +92,7 @@ namespace Moejoe.SimpleServiceDiscovery.Server.Tests.ServiceRegistration
                 {
                     var store = new Mock<IServiceRegistryStore>();
                     store.Setup(p => p.GetAsync(ExistingServiceInstance.Id)).ReturnsAsync(default(ServiceInstanceDao));
-                    var service = new ServiceRegistrationService(store.Object);
+                    var service = new ServiceRegistrationService(store.Object, NullLogger<ServiceRegistrationService>.Instance);
                     await Assert.ThrowsAsync<ServiceInstanceNotFoundException>(async () => await service.UnregisterAsync(ExistingServiceInstance.Id));
 
                 }

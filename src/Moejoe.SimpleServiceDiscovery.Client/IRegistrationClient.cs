@@ -7,6 +7,7 @@ namespace Moejoe.SimpleServiceDiscovery.Client
 {
     public interface IRegistrationClient
     {
-        Task<RegistrationResponse> RegisterAsync(ServiceInstance definition, CancellationToken cancellationToken);
+        Task<RegistrationResponse> RegisterAsync(ServiceInstance definition, CancellationToken cancellationToken = default(CancellationToken));
+        Task UnregisterAsync(string id, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

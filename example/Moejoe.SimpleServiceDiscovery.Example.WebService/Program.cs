@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
 
-namespace Moejoe.SimpleServiceDiscovery.WebService
+namespace Moejoe.SimpleServiceDiscovery.Example.WebService
 {
     public class Program
     {
@@ -24,10 +25,6 @@ namespace Moejoe.SimpleServiceDiscovery.WebService
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-            //.ConfigureLogging( logging => {
-
-
-            //})
-            ;
+            .ConfigureLogging( logging => { logging.SetMinimumLevel(LogLevel.Debug); });
     }
 }

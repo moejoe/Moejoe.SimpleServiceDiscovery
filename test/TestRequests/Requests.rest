@@ -1,4 +1,4 @@
-@baseUrl=http://localhost:5000
+@baseUrl=http://localhost:53357
 ###
 # @name registerService
 
@@ -15,7 +15,7 @@ Content-Type: application/json
 ###
 # @name discoverService
 
-GET {{baseUrl}}/services/SimpleService
+GET {{baseUrl}}/services/Example.Api
 
 
 

@@ -15,6 +15,7 @@ namespace Moejoe.SimpleServiceDiscovery.Common
         public static class Register
         {
             public static Uri RegisterService => new Uri($"{Resources.Services}", UriKind.Relative);
+            public static Uri UnregisterService(string id) => new Uri($"{Resources.Services}/{id}", UriKind.Relative);
         }
 
         public static class ErrorTypes
@@ -22,7 +23,7 @@ namespace Moejoe.SimpleServiceDiscovery.Common
             private const string ErrorRoot = "https://errors.moejoe.com/simpleServiceDiscovery";
             public const string InvalidArgumentType = ErrorRoot + "/InvalidArgumentType";
             public const string ServiceNotFound = ErrorRoot + "/Discovery/ServiceNotFoundType";
-            public const string ServiceAlreadyExists= ErrorRoot + "/Discovery/ServiceAlreadyExists";
+            public const string ServiceAlreadyExists = ErrorRoot + "/Discovery/ServiceAlreadyExists";
         }
     }
 }

@@ -9,8 +9,6 @@ using Moejoe.SimpleServiceDiscovery.Common.Models;
 
 namespace Moejoe.SimpleServiceDiscovery.Client
 {
-
-
     public class DiscoveryClient : IDiscoveryClient
     {
         private readonly HttpClient _channel;
@@ -41,7 +39,7 @@ namespace Moejoe.SimpleServiceDiscovery.Client
                             IsError = false
                         }).FirstOrDefault();
                 }
-                var error = responseStream.DeserializeFromStream<Error>();
+                var error = responseStream.DeserializeFromStream<Error>() ?? throw DiscoveryException.UnexpectedStatusCodeWithNoErrorContent(response);
                 if (error.Type == DiscoveryApi.ErrorTypes.ServiceNotFound)
                 {
                     return DiscoveryResponse.DoesNotExist();
@@ -62,5 +60,14 @@ namespace Moejoe.SimpleServiceDiscovery.Client
         public DiscoveryException(string message, Exception innerException) : base(message, innerException)
         {
         }
+
+        public DiscoveryException(string message) : base(message)
+        {
+            
+        }
+
+        public static DiscoveryException UnexpectedStatusCodeWithNoErrorContent(HttpResponseMessage response) => new DiscoveryException(
+            $"Server responded with unexpected StatusCode: {response.StatusCode}. The response didn't contain an error-object.");
+
     }
 }

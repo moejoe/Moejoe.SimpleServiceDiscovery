@@ -37,6 +37,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{0A7A48
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moejoe.SimpleServiceDiscovery.Example.WebService", "example\Moejoe.SimpleServiceDiscovery.Example.WebService\Moejoe.SimpleServiceDiscovery.Example.WebService.csproj", "{B898F1A1-08E4-446D-8397-DE61E406A4EE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moejoe.SimpleServiceDiscovery.Example.Api", "example\Moejoe.SimpleServiceDiscovery.Example.Api\Moejoe.SimpleServiceDiscovery.Example.Api.csproj", "{1FA6CD43-3902-4833-A0DD-B8A5CA800894}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moejoe.SimpleServiceDiscovery.Client.WebHost.Extensions", "src\Moejoe.SimpleServiceDiscovery.Client.WebHost.Extensions\Moejoe.SimpleServiceDiscovery.Client.WebHost.Extensions.csproj", "{32B9EADE-8D19-49C6-8F87-C26FD51B8104}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +83,14 @@ Global
 		{B898F1A1-08E4-446D-8397-DE61E406A4EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B898F1A1-08E4-446D-8397-DE61E406A4EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B898F1A1-08E4-446D-8397-DE61E406A4EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FA6CD43-3902-4833-A0DD-B8A5CA800894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FA6CD43-3902-4833-A0DD-B8A5CA800894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FA6CD43-3902-4833-A0DD-B8A5CA800894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FA6CD43-3902-4833-A0DD-B8A5CA800894}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32B9EADE-8D19-49C6-8F87-C26FD51B8104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32B9EADE-8D19-49C6-8F87-C26FD51B8104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32B9EADE-8D19-49C6-8F87-C26FD51B8104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32B9EADE-8D19-49C6-8F87-C26FD51B8104}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +107,8 @@ Global
 		{152133B4-E9C4-415C-8919-731692FE9452} = {C8ACA08A-B78F-4202-8602-EF47A1BA0A35}
 		{0A7A48F4-A3E0-4BCA-8B4E-E943BBB24BB5} = {C8ACA08A-B78F-4202-8602-EF47A1BA0A35}
 		{B898F1A1-08E4-446D-8397-DE61E406A4EE} = {82657891-4D60-4BF3-A141-D5E0E44CE27D}
+		{1FA6CD43-3902-4833-A0DD-B8A5CA800894} = {82657891-4D60-4BF3-A141-D5E0E44CE27D}
+		{32B9EADE-8D19-49C6-8F87-C26FD51B8104} = {0A7A48F4-A3E0-4BCA-8B4E-E943BBB24BB5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B6ADFC31-7568-4FB0-B896-827ECBC6D3F3}
